@@ -70,3 +70,35 @@ Feature: Answering All the Questions in Selenium Playground
               And I Enter The Text to The Answer Slot
               And I Click Check Results Button
              Then I See "OK" for Ten Number
+        
+        Scenario: Get the Box on Top
+            Given I Navigate to Playground Homepage
+             When I Get The Box on Top
+              And I Enter The Box to The Answer Slot
+              And I Click Check Results Button
+             Then I See "OK" for Eleventh Number
+        
+        Scenario: Set Browser Width to 850 and Height to 650
+            Given I Navigate to Playground Homepage
+             When I Set The Browser to 850 and 650
+              And I Click Check Results Button
+             Then I See "OK" for Twelve Number
+            
+        Scenario: Find The ID of ishere
+            Given I Navigate to Playground Homepage
+             When I Enter The Answer of ID to The Answer Slot
+              And I Click Check Results Button
+             Then I See "OK" for Thirteen Number
+            
+        Scenario: Find The Purplebox id
+            Given I Navigate to Playground Homepage
+             When I Enter The Item is Visible to The Answer Slot
+              And I Click Check Results Button
+             Then I See "OK" for Fourteen Number
+            
+        Scenario: Waiting The Link
+            Given I Navigate to Playground Homepage
+             When I Click the Link
+              And I Click Submit Button
+              And I Click Check Results Button
+             Then I See "OK" for the Last Question

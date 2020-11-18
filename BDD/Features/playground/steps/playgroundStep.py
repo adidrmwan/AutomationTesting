@@ -165,3 +165,109 @@ def TenNumber(context,message):
     assert (message == result)
 
 # ===================================================================
+
+@when(u'I Get The Box on Top')
+def GetTheBox(context):
+    orange_box =  context.driver.find_element_by_id("orangebox")
+    green_box =   context.driver.find_element_by_id("greenbox")
+
+    if orange_box.location["y"] < green_box.location["y"] :
+        result = 'orange'
+    else:
+        result = 'green'
+    
+    print(result)
+
+
+@when(u'I Enter The Box to The Answer Slot')
+def AnswerTheQuestionBox(context):
+    orange_box =  context.driver.find_element_by_id("orangebox")
+    green_box =   context.driver.find_element_by_id("greenbox")
+
+    if orange_box.location["y"] < green_box.location["y"] :
+        result = 'orange'
+    else:
+        result = 'green'
+
+    context.driver.find_element_by_id("answer11").send_keys(result)
+
+
+@then(u'I See "{message}" for Eleventh Number')
+def EleventhNumber(context,message):
+    result = context.driver.find_element_by_id("ok_11").text
+    assert (message == result)
+
+# ===================================================================
+
+@when(u'I Set The Browser to 850 and 650')
+def SetBrowserSize(context):
+    context.driver.set_window_size(850, 650)
+
+
+@then(u'I See "{message}" for Twelve Number')
+def TwelveNumber(context,message):
+    result = context.driver.find_element_by_id("ok_12").text
+    assert (message == result)
+
+# ===================================================================
+
+@when(u'I Enter The Answer of ID to The Answer Slot')
+def GetDisplayingID(context):
+    item = len(context.driver.find_elements_by_id("ishere"))
+
+    if item > 0:
+        rest = 'yes'
+    else:
+        rest = 'no'
+    
+    context.driver.find_element_by_id("answer13").send_keys(rest)
+
+@then(u'I See "{message}" for Thirteen Number')
+def GetTheResult(context,message):
+    result = context.driver.find_element_by_id("ok_13").text
+    assert (result == message )
+
+# ===================================================================
+
+@when(u'I Enter The Item is Visible to The Answer Slot')
+def PurplerBoxVisible(context):
+    purple = context.driver.find_element_by_id("purplebox").is_displayed()
+
+    if purple is True:
+        rest = 'yes'
+    else:
+        rest = 'no'
+    
+    print(rest)
+    
+    context.driver.find_element_by_id("answer14").send_keys(rest)
+
+
+@then(u'I See "{message}" for Fourteen Number')
+def GetTheResult(context,message):
+    result = context.driver.find_element_by_id("ok_14").text
+    assert (result == message )
+
+# ===================================================================
+
+@when(u'I Click the Link')
+def ClickTheLink(context):
+    wait = WebDriverWait(context.driver, 10)
+    context.driver.find_element_by_xpath("//a[@onclick=\"show_new_link_after_wait();return false;\"]").click()
+    wait.until(EC.presence_of_element_located((By.XPATH,"//a[@onclick=\"click_after_wait();return false;\"]"))).click()
+    
+
+@when(u'I Click Submit Button')
+def SubmitButton(context):
+    context.driver.switch_to.alert.accept()
+    context.driver.find_element_by_id("submitbutton").click()
+
+
+@then(u'I See "{message}" for the Last Question')
+def step_impl(context,message):
+    result = context.driver.find_element_by_id("ok_15").text
+    result16 = context.driver.find_element_by_id("ok_16").text
+    result_last = context.driver.find_element_by_id("ok_17").text
+    assert (result16 == message )
+    assert (result == message )
+    assert (result_last == message )
