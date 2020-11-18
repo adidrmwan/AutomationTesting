@@ -109,3 +109,59 @@ def SixthNumber(context,message):
     assert (message == result)
 
 # ===================================================================
+
+@when(u'I Run JavaScript Function "ran_this_js_function()"')
+def RunJs(context):
+    context.driver.execute_script('ran_this_js_function();')
+
+
+@then(u'I See "{message}" for Seventh Number')
+def SeventhNumber(context,message):
+    result = context.driver.find_element_by_id("ok_7").text
+    assert (message == result)
+
+# ===================================================================
+
+@when(u'I Run JavaScript Function "got_return_from_js_function()"')
+def GetReturnJS(context):
+    return_text = context.driver.execute_script('return got_return_from_js_function();')
+
+@when(u'I Enter The Return Value to The Answer Slot')
+def AnswerTheQuestion(context):
+    return_text = context.driver.execute_script('return got_return_from_js_function();')
+    context.driver.find_element_by_id("answer8").send_keys(return_text)
+
+@then(u'I See "{message}" for Eight Number')
+def EightNumber(context,message):
+    result = context.driver.find_element_by_id("ok_8").text
+    assert (message == result)
+
+# ===================================================================
+
+@when(u'I Select written book on Form')
+def SelectWrittenBook(context):
+    context.driver.find_element_by_xpath("//input[@name='wrotebook']").click()
+
+@then(u'I See "{message}" for Nineth Number')
+def NinenthNumber(context,message):
+    result = context.driver.find_element_by_id("ok_9").text
+    assert (message == result)
+
+# ===================================================================
+
+@when(u'I Get The Text of Red Box')
+def GetText(context):
+    get_text = context.driver.find_element_by_id("redbox").text
+
+@when(u'I Enter The Text to The Answer Slot')
+def AnswerTheQuestion(context):
+    get_text = context.driver.find_element_by_id("redbox").text
+    context.driver.find_element_by_id("answer10").send_keys(get_text)
+
+
+@then(u'I See "{message}" for Ten Number')
+def TenNumber(context,message):
+    result = context.driver.find_element_by_id("ok_10").text
+    assert (message == result)
+
+# ===================================================================
