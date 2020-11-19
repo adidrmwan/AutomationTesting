@@ -1,7 +1,7 @@
 Environment : 
     - Windows 10
     - VS Code
-    
+
 Requirements : 
     - Python 3.6.8
     - Behave
@@ -19,3 +19,6 @@ References :
     5. https://selenium-python.readthedocs.io/
     6. http://appium.io/
     7. https://pip.pypa.io/en/stable/reference/pip_install/
+
+API Test using Robot Framework
+BDD using Behave python (Gherkyn syntax)
