@@ -64,7 +64,6 @@ def ClickCheckout(context):
 def SummaryPage(context):
     wait = WebDriverWait(context.driver, 10)
     address = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='app-layout']/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/div[2]/p[2]"))).text 
-    print (address)
     item = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='app-layout']/div[2]/div/div[2]/div[1]/div[3]/div/div"))).is_displayed()
     assert item is True
     payment = context.driver.find_element_by_xpath("//*[@id='app-layout']/div[2]/div/div[2]/div[2]/div").is_displayed()
